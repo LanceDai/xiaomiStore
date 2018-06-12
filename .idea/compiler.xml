@@ -9,5 +9,8 @@
         <module name="xiaomiStore" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="xiaomiStore" target="1.7" />
+    </bytecodeTargetLevel>
   </component>
 </project>
