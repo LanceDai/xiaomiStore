@@ -11,12 +11,12 @@ public class productController {
     @RequestMapping("/detail/{productName}")
     public String showDetail(@PathVariable("productName") String productName, Model model){
         System.out.println("productName = " + productName);
-        return "";
+        return "detail";
     }
 
     @RequestMapping("/search/{TypeName}")
     public String showAllProductsWithType(@PathVariable("TypeName") String typeName, Model model){
         System.out.println("typeName = " + typeName);
-        return "";
+        return "resultSet";
     }
 }

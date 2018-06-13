@@ -9,11 +9,11 @@ public interface ProductVersionService {
 
     int insert(@Param("record") ProductVersion record);
 
-    int delete(int versionId);
+    int delete(String versionId);
 
     int update(@Param("record") ProductVersion record);
 
-    ProductVersion select(int versionId);
+    ProductVersion select(String versionId);
 
     List<ProductVersion> selectAll();
 }

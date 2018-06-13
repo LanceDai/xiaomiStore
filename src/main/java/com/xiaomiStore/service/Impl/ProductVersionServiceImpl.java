@@ -23,7 +23,7 @@ public class ProductVersionServiceImpl implements ProductVersionService {
     }
 
     @Override
-    public int delete(int versionId) {
+    public int delete(String versionId) {
         return productVersionDao.delete(versionId);
     }
 
@@ -33,7 +33,7 @@ public class ProductVersionServiceImpl implements ProductVersionService {
     }
 
     @Override
-    public ProductVersion select(int versionId) {
+    public ProductVersion select(String versionId) {
         return productVersionDao.select(versionId);
     }
 

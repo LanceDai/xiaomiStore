@@ -1,4 +1,4 @@
-import com.xiaomiStore.pojo.IndexView;
+import com.xiaomiStore.utils.IndexView;
 import com.xiaomiStore.pojo.OriginType;
 import com.xiaomiStore.pojo.Type;
 import com.xiaomiStore.service.ProductService;

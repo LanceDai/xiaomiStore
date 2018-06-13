@@ -6,14 +6,13 @@ import java.sql.Timestamp;
 public class User {
    private String userId;
    private String userName;
-   private String password;
    private String telephoneNumber;
    private Timestamp createTime;
    private String img;
    private String hobby;
    private String address;
    private String sign;
-
+    private String password;
 
 
     public String getUserId() {

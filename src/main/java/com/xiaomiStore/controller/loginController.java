@@ -1,6 +1,6 @@
 package com.xiaomiStore.controller;
 
-import com.xiaomiStore.pojo.IndexView;
+import com.xiaomiStore.utils.IndexView;
 import com.xiaomiStore.pojo.OriginType;
 import com.xiaomiStore.pojo.Type;
 import com.xiaomiStore.service.ProductService;
@@ -48,6 +48,6 @@ public class loginController {
 
     @RequestMapping("/liebiao")
     public String liebiao() {
-        return "liebiao";
+        return "resultSet";
     }
 }
