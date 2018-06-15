@@ -1,3 +1,6 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page isELIgnored="false" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -110,8 +113,8 @@
 	<div class="jieshao mt20 w">
 		<div class="left fl"><img src="../static/image/liebiao_xiaomi6.jpg"></div>
 		<div class="right fr">
-			<div class="h3 ml20 mt20">小米6</div>
-			<div class="jianjie mr40 ml20 mt10">变焦双摄，4 轴防抖 / 骁龙835 旗舰处理器，6GB 大内存，最大可选128GB 闪存 / 5.15" 护眼屏 / 四曲面玻璃/陶瓷机身</div>
+			<div class="h3 ml20 mt20">${productDetail.productName}</div>
+			<div class="jianjie mr40 ml20 mt10">变焦双摄，4 轴防抖 / 骁龙845 旗舰处理器，6GB 大内存，最大可选128GB 闪存 / 5.15" 护眼屏 / 四曲面玻璃/陶瓷机身</div>
 			<div class="jiage ml20 mt10">2499.00元</div>
 			<div class="ft20 ml20 mt20">选择版本</div>
 			<div class="xzbb ml20 mt10">

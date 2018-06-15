@@ -2,6 +2,7 @@ package com.xiaomiStore.dao;
 
 import com.xiaomiStore.pojo.Product;
 import org.apache.ibatis.annotations.*;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -29,4 +30,7 @@ public interface ProductDao {
 
     @Select("select * from xiaomi_product where typeId = #{typeId}")
     List<Product> selectByTypeId(String typeId);
+
+    @Select("SELECT productId from xiaomi_product WHERE productName = #{productName}")
+    String getProductIdByProductName(@Param("productName") String productName);
 }

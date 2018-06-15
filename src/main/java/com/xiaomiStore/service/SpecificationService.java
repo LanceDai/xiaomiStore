@@ -15,4 +15,10 @@ public interface SpecificationService {
     Specification select(String colorId, String productId, String versionId);
 
     List<Specification> selectAll();
+
+    List<String> selectAllColorWithProduct(String productId);
+
+
+    List<String> selectAllVersionWithProduct(String productId);
+
 }

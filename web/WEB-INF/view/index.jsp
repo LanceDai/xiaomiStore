@@ -102,110 +102,43 @@
         <c:forEach items="${typeList.originTypeList}" var="tl">
             <div class="inner-box nav">
                 <ul>
-                        <%-- <li>
-                             <div class="pop">
-                                 <div class="left f1">
-                                     <c:forEach items="${tl.productList}" end="5" var="pll">
-                                         <div>
-                                             <a class="link" href="">
-                                                 <img class="thumb"
-                                                      src="../static/image/thumb/${pll.productName.replace(' ', '_').replace("\"", "")}.jpg">
-                                                 <span class="ttext">${pll.productName}</span>
-                                             </a>
-                                         </div>
-                                     </c:forEach>
-                                 </div>
-                                 <div class="cnt f1">
-                                     <c:forEach items="${tl.productList}" begin="6" end="11" var="plc">
-                                         <div>
-                                             <a class="link" href="">
-                                                 <img class="thumb"
-                                                      src="../static/image/thumb/${plc.productName.replace(' ', '_').replace("\"", "")}.jpg">
-                                                 <span class="ttext">${plc.productName}</span>
-                                             </a>
-                                         </div>
-                                     </c:forEach>
-                                 </div>
-                                 <div class="right f1">
-                                     <c:forEach items="${tl.productList}" begin="12" end="17" var="ple">
-                                         <div>
-                                             <a class="link" href="">
-                                                 <img class="thumb"
-                                                      src="../static/image/thumb/${ple.productName.replace(' ', '_').replace("\"", "")}.jpg">
-                                                 <span class="ttext">${ple.productName}</span>
-                                             </a>
-                                         </div>
-                                     </c:forEach>
-                                 </div>
-                             </div>
-                         </li>--%>
-
                     <li>
-                        <div class="pop" style="display: flex;flex-wrap: wrap;flex-direction: column;">
-                            <div class="left f1" style="display: flex;">
-
-                                <div style="flex-grow: 1;">
-                                    <a class="link" href="">
-                                        <img class="thumb" src="../static/image/thumb/小米8.jpg" style="display: block;">
-                                        <span class="ttext">小米8</span>
-                                    </a>
-                                </div>
-
-                                <div style="flex-grow: 1;">
-                                    <a class="link" href="">
-                                        <img class="thumb" src="../static/image/thumb/红米5_Plus.jpg"
-                                             style="display: block;">
-                                        <span class="ttext">红米5 Plus</span>
-                                    </a>
-                                </div>
-
-                                <div style="flex-grow: 1;">
-                                    <a class="link" href="">
-                                        <img class="thumb" src="../static/image/thumb/红米5.jpg" style="
-    display: block;
-">
-                                        <span class="ttext">红米5</span>
-                                    </a>
-                                </div>
-
-                                <div style="
-    flex-grow: 1;
-">
-                                    <a class="link" href="">
-                                        <img class="thumb" src="../static/image/thumb/红米5A.jpg" style="
-    display: block;
-">
-                                        <span class="ttext">红米5A</span>
-                                    </a>
-                                </div>
-
-                                <div style="
-    flex-grow: 1;
-">
-                                    <a class="link" href="">
-                                        <img class="thumb" src="../static/image/thumb/移动4G+专区.jpg" style="
-    display: block;
-">
-                                        <span class="ttext">移动4G+专区</span>
-                                    </a>
-                                </div>
-
-                                <div style="
-    flex-grow: 1;
-">
-                                    <a class="link" href="">
-                                        <img class="thumb" src="../static/image/thumb/对比手机.jpg" style="
-    display: block;
-">
-                                        <span class="ttext">对比手机</span>
-                                    </a>
-                                </div>
-
+                        <div class="pop" style="height: 100%;">
+                            <div class="left fl" style="display: inline-block">
+                                <c:forEach items="${tl.productList}" end="5" var="pll">
+                                    <div style=" width: 265px; height:77px">
+                                        <a class="link" href="/detail/${pll.productName}">
+                                            <img class="thumb" width="40px" height="40px"
+                                                 src="../static/image/thumb/${pll.productName.replace(' ', '_').replace("\"", "")}.jpg">
+                                            <span class="ttext">${pll.productName}</span>
+                                        </a>
+                                    </div>
+                                </c:forEach>
+                            </div>
+                            <div class="cnt fl" style="display: inline-block">
+                                <c:forEach items="${tl.productList}" begin="6" end="11" var="plc">
+                                    <div style=" width: 265px; height:77px">
+                                        <a class="link" href="/detail/${plc.productName}">
+                                            <img class="thumb" width="40px" height="40px"
+                                                 src="../static/image/thumb/${plc.productName.replace(' ', '_').replace("\"", "")}.jpg">
+                                            <span class="ttext">${plc.productName}</span>
+                                        </a>
+                                    </div>
+                                </c:forEach>
+                            </div>
+                            <div class="right fl" style="display: inline-block">
+                                <c:forEach items="${tl.productList}" begin="12" end="17" var="ple">
+                                    <div style=" width: 265px; height:77px">
+                                        <a class="link" href=""/detail/${ple.productName}">
+                                            <img class="thumb" width="40px" height="40px"
+                                                 src="../static/image/thumb/${ple.productName.replace(' ', '_').replace("\"", "")}.jpg">
+                                            <span class="ttext">${ple.productName}</span>
+                                        </a>
+                                    </div>
+                                </c:forEach>
                             </div>
                         </div>
                     </li>
-
-
                 </ul>
             </div>
         </c:forEach>
@@ -214,7 +147,7 @@
     <div class="menu-content" id="menu-content">
         <c:forEach items="${typeList.originTypeList}" var="tl">
             <div class="menu-item">
-                <a href="">
+                <a href="/search/${tl.type.name}">
                     <span>${tl.type.name}</span>
                     <i class="icon">&#xe665;</i>
                 </a>

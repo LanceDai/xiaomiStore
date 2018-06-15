@@ -4,15 +4,18 @@ import com.xiaomiStore.dao.SpecificationDao;
 import com.xiaomiStore.pojo.Specification;
 import com.xiaomiStore.service.SpecificationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-public class SpecificationImpl implements SpecificationService {
+@Service
+
+public class SpecificationServiceImpl implements SpecificationService {
 
     private final SpecificationDao specificationDao;
 
     @Autowired
-    public SpecificationImpl(SpecificationDao specificationDao) {
+    public SpecificationServiceImpl(SpecificationDao specificationDao) {
         this.specificationDao = specificationDao;
     }
 
@@ -39,5 +42,15 @@ public class SpecificationImpl implements SpecificationService {
     @Override
     public List<Specification> selectAll() {
         return specificationDao.selectAll();
+    }
+
+    @Override
+    public List<String> selectAllColorWithProduct(String productId) {
+        return specificationDao.selectAllColorWithProduct(productId);
+    }
+
+    @Override
+    public List<String> selectAllVersionWithProduct(String productId) {
+        return specificationDao.selectAllVersionWithProduct(productId);
     }
 }

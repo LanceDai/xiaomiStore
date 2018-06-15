@@ -22,6 +22,12 @@ public interface SpecificationDao {
     @Select("SELECT * FROM xiaomi_specification WHERE colorId = #{colorId} AND productId = #{productId} AND versionId = #{versionId}")
     Specification select(@Param("colorId") String colorId, @Param("productId") String productId, @Param("versionId") String versionId);
 
+    @Select("SELECT * FROM xiaomi_specification WHERE productId = #{productId}")
+    List<String> selectAllColorWithProduct(@Param("productId") String productId);
+
+    @Select("SELECT * FROM xiaomi_specification WHERE productId = #{productId}")
+    List<String> selectAllVersionWithProduct(@Param("productId") String productId);
+
     @Select("SELECT * FROM xiaomi_specification")
     List<Specification> selectAll();
 }

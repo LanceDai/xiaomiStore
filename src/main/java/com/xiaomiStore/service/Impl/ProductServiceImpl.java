@@ -47,4 +47,9 @@ public class ProductServiceImpl implements ProductService {
     public List<Product> selectByTypeId(String typeId) {
         return productDao.selectByTypeId(typeId);
     }
+
+    @Override
+    public String getProductIdByProductName(String productName) {
+        return productDao.getProductIdByProductName(productName);
+    }
 }

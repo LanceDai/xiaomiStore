@@ -9,17 +9,20 @@ import org.apache.ibatis.annotations.Update;
 import java.util.List;
 
 public interface ProductService {
-    int insert(@Param("record") Product record);
+    int insert( Product record);
 
     int delete(int productId);
 
-    int update(@Param("record") Product record);
+    int update( Product record);
 
     Product select(int productId);
 
     List<Product> selectAll();
 
     List<Product> selectByTypeId(String typeId);
+
+    String getProductIdByProductName( String productName);
+
 }
 
 
