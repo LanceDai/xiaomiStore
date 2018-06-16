@@ -8,6 +8,9 @@ CREATE TABLE xiaomi.xiaomi_color
     colorId varchar(30) DEFAULT '' PRIMARY KEY NOT NULL,
     colorName varchar(30)
 );
+INSERT INTO xiaomi.xiaomi_color (colorId, colorName) VALUES ('#000000', '黑色');
+INSERT INTO xiaomi.xiaomi_color (colorId, colorName) VALUES ('#0000FF', '蓝色');
+INSERT INTO xiaomi.xiaomi_color (colorId, colorName) VALUES ('#ffffff', '白色');
 CREATE TABLE xiaomi.xiaomi_comment
 (
     commentId varchar(255) DEFAULT '' PRIMARY KEY NOT NULL,
@@ -73,7 +76,6 @@ INSERT INTO xiaomi.xiaomi_product (productId, productName, productDescription, t
 INSERT INTO xiaomi.xiaomi_product (productId, productName, productDescription, typeId) VALUES ('127', '小米路由器3G', '', '7');
 INSERT INTO xiaomi.xiaomi_product (productId, productName, productDescription, typeId) VALUES ('128', '小米路由器3A', '', '7');
 INSERT INTO xiaomi.xiaomi_product (productId, productName, productDescription, typeId) VALUES ('129', '小米路由器Pro', '', '7');
-INSERT INTO xiaomi.xiaomi_product (productId, productName, productDescription, typeId) VALUES ('13', '移动4G+专区', '', '1');
 INSERT INTO xiaomi.xiaomi_product (productId, productName, productDescription, typeId) VALUES ('130', '小米路由器HD', '', '7');
 INSERT INTO xiaomi.xiaomi_product (productId, productName, productDescription, typeId) VALUES ('131', 'WiFi放大器2', '', '7');
 INSERT INTO xiaomi.xiaomi_product (productId, productName, productDescription, typeId) VALUES ('132', 'WiFi放大器Pro', '', '7');
@@ -84,7 +86,6 @@ INSERT INTO xiaomi.xiaomi_product (productId, productName, productDescription, t
 INSERT INTO xiaomi.xiaomi_product (productId, productName, productDescription, typeId) VALUES ('137', '手机保护套', '', '7');
 INSERT INTO xiaomi.xiaomi_product (productId, productName, productDescription, typeId) VALUES ('138', '手机贴膜', '', '7');
 INSERT INTO xiaomi.xiaomi_product (productId, productName, productDescription, typeId) VALUES ('139', '自拍杆', '', '7');
-INSERT INTO xiaomi.xiaomi_product (productId, productName, productDescription, typeId) VALUES ('14', '对比手机', '', '1');
 INSERT INTO xiaomi.xiaomi_product (productId, productName, productDescription, typeId) VALUES ('140', '数据线', '', '7');
 INSERT INTO xiaomi.xiaomi_product (productId, productName, productDescription, typeId) VALUES ('142', '黑鲨配件', '', '7');
 INSERT INTO xiaomi.xiaomi_product (productId, productName, productDescription, typeId) VALUES ('143', '新小米移动电源2', '', '8');
@@ -116,7 +117,6 @@ INSERT INTO xiaomi.xiaomi_product (productId, productName, productDescription, t
 INSERT INTO xiaomi.xiaomi_product (productId, productName, productDescription, typeId) VALUES ('167', '小米运动蓝牙耳机', '', '9');
 INSERT INTO xiaomi.xiaomi_product (productId, productName, productDescription, typeId) VALUES ('168', '小米运动蓝牙耳机mini', '', '9');
 INSERT INTO xiaomi.xiaomi_product (productId, productName, productDescription, typeId) VALUES ('169', '小米蓝牙耳机', '', '9');
-INSERT INTO xiaomi.xiaomi_product (productId, productName, productDescription, typeId) VALUES ('17', '手机上门维修', '', '1');
 INSERT INTO xiaomi.xiaomi_product (productId, productName, productDescription, typeId) VALUES ('170', '小米蓝牙音频接收器', '', '9');
 INSERT INTO xiaomi.xiaomi_product (productId, productName, productDescription, typeId) VALUES ('171', '小米头戴式耳机 轻松版', '', '9');
 INSERT INTO xiaomi.xiaomi_product (productId, productName, productDescription, typeId) VALUES ('172', '品牌耳机', '', '9');
@@ -246,23 +246,34 @@ CREATE TABLE xiaomi.xiaomi_product_version
     versionId varchar(20) DEFAULT '' PRIMARY KEY NOT NULL,
     detailVersion varchar(255) DEFAULT '' NOT NULL
 );
-INSERT INTO xiaomi.xiaomi_product_version (versionId, detailVersion) VALUES ('1', '全网通版 6GB+64GB ');
+INSERT INTO xiaomi.xiaomi_product_version (versionId, detailVersion) VALUES ('1', '全网通版 6GB+64GB');
 INSERT INTO xiaomi.xiaomi_product_version (versionId, detailVersion) VALUES ('2', '全网通版 6GB+128GB');
+INSERT INTO xiaomi.xiaomi_product_version (versionId, detailVersion) VALUES ('3', '全网通版 6GB+256GB');
 CREATE TABLE xiaomi.xiaomi_shopping_cart
 (
     cartId varchar(20) DEFAULT '' PRIMARY KEY NOT NULL,
     userId varchar(255) DEFAULT '' NOT NULL,
-    versionId varchar(255) DEFAULT '' NOT NULL,
+    specificationId varchar(255) DEFAULT '' NOT NULL,
     number int(11) DEFAULT '0' NOT NULL
 );
 CREATE TABLE xiaomi.xiaomi_specification
 (
-    colorId varchar(255) DEFAULT '' PRIMARY KEY NOT NULL COMMENT '具体商品',
-    productId varchar(255),
-    versionId varchar(255),
+    colorId varchar(255) DEFAULT '' NOT NULL COMMENT '具体商品',
+    productId varchar(255) NOT NULL,
+    versionId varchar(255) NOT NULL,
     stock varchar(255),
-    price varchar(255)
+    price varchar(255),
+    specificationId varchar(255) PRIMARY KEY NOT NULL
 );
+INSERT INTO xiaomi.xiaomi_specification (colorId, productId, versionId, stock, price, specificationId) VALUES ('#000000', '1', '1', '100', '2699', '1');
+INSERT INTO xiaomi.xiaomi_specification (colorId, productId, versionId, stock, price, specificationId) VALUES ('#000000', '1', '2', '100', '2999', '2');
+INSERT INTO xiaomi.xiaomi_specification (colorId, productId, versionId, stock, price, specificationId) VALUES ('#000000', '1', '3', '100', '3299', '3');
+INSERT INTO xiaomi.xiaomi_specification (colorId, productId, versionId, stock, price, specificationId) VALUES ('#0000FF', '1', '1', '100', '2699', '4');
+INSERT INTO xiaomi.xiaomi_specification (colorId, productId, versionId, stock, price, specificationId) VALUES ('#0000FF', '1', '2', '100', '2999', '5');
+INSERT INTO xiaomi.xiaomi_specification (colorId, productId, versionId, stock, price, specificationId) VALUES ('#0000FF', '1', '3', '100', '3299', '6');
+INSERT INTO xiaomi.xiaomi_specification (colorId, productId, versionId, stock, price, specificationId) VALUES ('#ffffff', '1', '1', '100', '2699', '7');
+INSERT INTO xiaomi.xiaomi_specification (colorId, productId, versionId, stock, price, specificationId) VALUES ('#ffffff', '1', '2', '100', '2999', '8');
+INSERT INTO xiaomi.xiaomi_specification (colorId, productId, versionId, stock, price, specificationId) VALUES ('#ffffff', '1', '3', '100', '3299', '9');
 CREATE TABLE xiaomi.xiaomi_type
 (
     typeId varchar(20) DEFAULT '' PRIMARY KEY NOT NULL,
