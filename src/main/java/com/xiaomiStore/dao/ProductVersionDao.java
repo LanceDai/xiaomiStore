@@ -24,4 +24,10 @@ public interface ProductVersionDao {
 
     @Select("select * from xiaomi_product_version")
     List<ProductVersion> selectAll();
+
+    @Select("select detailVersion from xiaomi_product_version WHERE versionId = #{versionId}")
+    String getDetailVersionByVersionId(String versionId);
+
+    @Select("select versionId from xiaomi_product_version WHERE detailVersion = #{detailVersion}")
+    String getVersionIdByDetailVersion(String detailVersion);
 }

@@ -2,7 +2,6 @@ package com.xiaomiStore.dao;
 
 import com.xiaomiStore.pojo.Product;
 import org.apache.ibatis.annotations.*;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -13,24 +12,23 @@ public interface ProductDao {
     int insert(@Param("record") Product record);
 
     @Delete("delete from xiaomi_product where productId = #{productId}")
-    int delete(int productId);
+    int delete(String productId);
 
-    @Update("update miaomi_product set " +
-            "productId = #{record.productId}, " +
+    @Update("update xiaomi_product set " +
             "productName = #{record.productName}, " +
-            "produproductDescriptionctId = #{record.produproductDescriptionctId}, " +
-            "typeId = #{record.typeId}")
+            "productDescription = #{record.productDescription}, " +
+            "typeId = #{record.typeId} where productId = #{record.productId}")
     int update(@Param("record") Product record);
 
     @Select("select * from xiaomi_product where productId = #{productId}")
-    Product select(int productId);
+    Product selectById(String productId);
 
     @Select("select * from xiaomi_product")
     List<Product> selectAll();
 
-    @Select("select * from xiaomi_product where typeId = #{typeId}")
+    @Select("SELECT * FROM xiaomi_product WHERE typeId = #{typeId}")
     List<Product> selectByTypeId(String typeId);
 
-    @Select("SELECT productId from xiaomi_product WHERE productName = #{productName}")
-    String getProductIdByProductName(@Param("productName") String productName);
+    @Select("SELECT productId FROM xiaomi_product WHERE productName = #{productName}")
+    String getProductIdByProductName(String productName);
 }

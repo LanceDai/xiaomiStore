@@ -12,9 +12,9 @@ public interface OrderService {
 
     public int insert(@Param("record") Order record);
 
-    public int delete(int orderId);
+    public int delete(String orderId);
 
-    public Order select(int orderId);
+    public Order select(String orderId);
 
     public List<Order> selectAll();
 }

@@ -7,15 +7,15 @@ import java.util.List;
 
 @Mapper
 public interface OrderDao {
-    @Insert("insert into xiaomi_order (orderId, userId, sum, createTime) " +
-            "values (#{record.orderID}, #{record.userID}, #{record.sum}, #{record.createTime})")
+    @Insert("insert into xiaomi_order (orderId, userId, sum, createTime, status) " +
+            "values (#{record.orderID}, #{record.userID}, #{record.sum}, #{record.createTime}, #{record.status})")
     int insert(@Param("record") Order record);
 
     @Delete("delete from xiaomi_order where orderId = #{orderId}")
-    int delete(int orderId);
+    int delete(String orderId);
 
     @Select("select * from xiaomi_order where orderId = #{orderId}")
-    Order select(int orderId);
+    Order select(String orderId);
 
     @Select("select * from xiaomi_order")
     List<Order> selectAll();

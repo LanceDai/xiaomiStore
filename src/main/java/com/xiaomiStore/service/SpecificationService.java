@@ -3,6 +3,7 @@ package com.xiaomiStore.service;
 import com.xiaomiStore.pojo.Specification;
 
 import java.util.List;
+import java.util.Map;
 
 public interface SpecificationService {
 
@@ -16,9 +17,10 @@ public interface SpecificationService {
 
     List<Specification> selectAll();
 
-    List<String> selectAllColorWithProduct(String productId);
+    Map<String, String> selectAllColorWithProduct(String productId);
 
 
-    List<String> selectAllVersionWithProduct(String productId);
+    Map<String, String> selectAllVersionWithProduct(String productId);
 
+    String getMinPriceByProductId(String productId);
 }

@@ -1,8 +1,9 @@
 package com.xiaomiStore.controller;
 
-import com.xiaomiStore.dao.ProductDao;
+import com.xiaomiStore.pojo.Product;
 import com.xiaomiStore.service.ProductService;
 import com.xiaomiStore.service.SpecificationService;
+import com.xiaomiStore.service.TypeService;
 import com.xiaomiStore.utils.ProductDetail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,17 +11,24 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 @Controller
-public class productController {
+public class ProductController {
 
     private final SpecificationService specificationService;
 
     private final ProductService productService;
 
+    private final TypeService typeService;
+
     @Autowired
-    public productController(SpecificationService specificationService, ProductService productService) {
+    public ProductController(SpecificationService specificationService, ProductService productService, TypeService typeService) {
         this.specificationService = specificationService;
         this.productService = productService;
+        this.typeService = typeService;
     }
 
     @RequestMapping("/detail/{productName}")
@@ -32,6 +40,8 @@ public class productController {
         String productId = productService.getProductIdByProductName(productName);
         productDetail.setColorList(specificationService.selectAllColorWithProduct(productId));
         productDetail.setVersionList(specificationService.selectAllVersionWithProduct(productId));
+        System.out.println(productDetail.getVersionList());
+        System.out.println(productDetail.getColorList());
         model.addAttribute("productDetail", productDetail);
         return "detail";
     }
@@ -39,6 +49,18 @@ public class productController {
     @RequestMapping("/search/{TypeName}")
     public String showAllProductsWithType(@PathVariable("TypeName") String typeName, Model model) {
         System.out.println("typeName = " + typeName);
+        Map<String, String> productMap = new HashMap<>();
+        String typeId = typeService.getTypeIdByTypeName(typeName);
+        List<Product> productList = productService.selectByTypeId(typeId);
+        for (Product p : productList) {
+            productMap.put(p.getProductName(), specificationService.getMinPriceByProductId(p.getProductId()));
+        }
+
+        System.out.println("productMap = " + productMap);
+        model.addAttribute("productMap", productMap);
+        model.addAttribute("typeName", typeName);
         return "resultSet";
     }
+
+
 }

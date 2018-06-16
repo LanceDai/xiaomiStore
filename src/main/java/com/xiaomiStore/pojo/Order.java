@@ -7,30 +7,20 @@ public class Order {
     private String userId;
     private int sum;
     private Timestamp timestamp;
+    private String status;
 
     @Override
     public String toString() {
-        return "User{" +
+        return "Order{" +
                 "orderId='" + orderId + '\'' +
                 ", userId='" + userId + '\'' +
                 ", sum=" + sum +
                 ", timestamp=" + timestamp +
+                ", status='" + status + '\'' +
                 '}';
     }
 
-    public Order(String orderId, String userId, int sum, Timestamp timestamp) {
-        this.orderId = orderId;
-        this.userId = userId;
-        this.sum = sum;
-        this.timestamp = timestamp;
-    }
-
-    public Order() {
-
-    }
-
     public String getOrderId() {
-
         return orderId;
     }
 
@@ -60,5 +50,26 @@ public class Order {
 
     public void setTimestamp(Timestamp timestamp) {
         this.timestamp = timestamp;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public Order() {
+
+    }
+
+    public Order(String orderId, String userId, int sum, Timestamp timestamp, String status) {
+
+        this.orderId = orderId;
+        this.userId = userId;
+        this.sum = sum;
+        this.timestamp = timestamp;
+        this.status = status;
     }
 }

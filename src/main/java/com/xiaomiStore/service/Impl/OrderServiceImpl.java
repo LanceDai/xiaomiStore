@@ -7,8 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 @Service
-public class OrderServiceImpl implements OrderService{
+public class OrderServiceImpl implements OrderService {
 
     private final OrderDao orderDao;
 
@@ -23,12 +24,12 @@ public class OrderServiceImpl implements OrderService{
     }
 
     @Override
-    public int delete(int orderId) {
+    public int delete(String orderId) {
         return orderDao.delete(orderId);
     }
 
     @Override
-    public Order select(int orderId) {
+    public Order select(String orderId) {
         return orderDao.select(orderId);
     }
 

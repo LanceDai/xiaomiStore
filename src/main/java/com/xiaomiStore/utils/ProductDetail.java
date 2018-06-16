@@ -1,12 +1,22 @@
 package com.xiaomiStore.utils;
 
-import java.util.List;
+import java.util.Map;
 
 public class ProductDetail {
 
     private String productName;
-    private List<String> versionList;
-    private List<String> colorList;
+
+    public Map<String, String> getVersionList() {
+        return versionList;
+    }
+
+    private Map<String, String> versionList;
+
+    public Map<String, String> getColorList() {
+        return colorList;
+    }
+
+    private Map<String, String> colorList;
 
     public ProductDetail() {
 
@@ -29,19 +39,11 @@ public class ProductDetail {
         this.productName = productName;
     }
 
-    public List<String> getVersionList() {
-        return versionList;
-    }
-
-    public void setVersionList(List<String> versionList) {
+    public void setVersionList(Map<String, String> versionList) {
         this.versionList = versionList;
     }
 
-    public List<String> getColorList() {
-        return colorList;
-    }
-
-    public void setColorList(List<String> colorList) {
+    public void setColorList(Map<String, String> colorList) {
         this.colorList = colorList;
     }
 }

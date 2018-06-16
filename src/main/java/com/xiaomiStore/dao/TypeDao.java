@@ -23,6 +23,9 @@ public interface TypeDao {
     @Select("SELECT * FROM xiaomi_type WHERE parentId = #{parentId} AND typeId != 0")
     List<Type> selectByParentId(String parentId);
 
+    @Select("SELECT typeId FROM xiaomi_type WHERE name = #{typeName}")
+    String getTypeIdByTypeName(String typeName);
+
     @Update("UPDATE xiaomi_type " +
             " SET name = #{record.name}," +
             " parentId = #{record.parentId}" +

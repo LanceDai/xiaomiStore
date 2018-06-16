@@ -1,22 +1,31 @@
 package com.xiaomiStore.service.Impl;
 
+import com.xiaomiStore.dao.ColorDao;
+import com.xiaomiStore.dao.ProductVersionDao;
 import com.xiaomiStore.dao.SpecificationDao;
 import com.xiaomiStore.pojo.Specification;
 import com.xiaomiStore.service.SpecificationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 @Service
 
 public class SpecificationServiceImpl implements SpecificationService {
 
     private final SpecificationDao specificationDao;
+    private final ProductVersionDao productVersionDao;
+    private final ColorDao colorDao;
 
     @Autowired
-    public SpecificationServiceImpl(SpecificationDao specificationDao) {
+    public SpecificationServiceImpl(SpecificationDao specificationDao, ProductVersionDao productVersionDao, ColorDao colorDao) {
         this.specificationDao = specificationDao;
+        this.productVersionDao = productVersionDao;
+        this.colorDao = colorDao;
     }
 
     @Override
@@ -45,12 +54,30 @@ public class SpecificationServiceImpl implements SpecificationService {
     }
 
     @Override
-    public List<String> selectAllColorWithProduct(String productId) {
-        return specificationDao.selectAllColorWithProduct(productId);
+    public Map<String, String> selectAllColorWithProduct(String productId) {
+        List<String> list = specificationDao.selectAllColorWithProduct(productId);
+        Map<String, String> stringStringMap = new HashMap<>();
+        for (String str : list) {
+            stringStringMap.put(str, colorDao.getColorNameByColorId(str));
+        }
+        return stringStringMap;
     }
 
     @Override
-    public List<String> selectAllVersionWithProduct(String productId) {
-        return specificationDao.selectAllVersionWithProduct(productId);
+    public Map<String, String> selectAllVersionWithProduct(String productId) {
+        Map<String, Map<String, String>> map = specificationDao.selectAllVersionWithProduct(productId);
+        Map<String, String> stringStringMap = new HashMap<>();
+        Set<String> keySet = map.keySet();
+
+        for (String str : keySet) {
+            stringStringMap.put(
+                    productVersionDao.getDetailVersionByVersionId(str), map.get(str).get("price"));
+        }
+        return stringStringMap;
+    }
+
+    @Override
+    public String getMinPriceByProductId(String productId) {
+        return specificationDao.getMinPriceByProductId(productId);
     }
 }

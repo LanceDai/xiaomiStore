@@ -52,4 +52,9 @@ public class TypeServiceImpl implements TypeService {
         return typeDao.delete(typeId);
     }
 
+    @Override
+    public String getTypeIdByTypeName(String typeName) {
+        return typeDao.getTypeIdByTypeName(typeName);
+    }
+
 }

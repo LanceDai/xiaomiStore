@@ -24,7 +24,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public int delete(int productId) {
+    public int delete(String productId) {
         return productDao.delete(productId);
     }
 
@@ -34,8 +34,8 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Product select(int productId) {
-        return productDao.select(productId);
+    public Product select(String productId) {
+        return productDao.selectById(productId);
     }
 
     @Override

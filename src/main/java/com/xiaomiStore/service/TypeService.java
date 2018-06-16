@@ -19,4 +19,6 @@ public interface TypeService {
     int update(Type record);
 
     int delete(String typeId);
+
+    String getTypeIdByTypeName(String typeName);
 }

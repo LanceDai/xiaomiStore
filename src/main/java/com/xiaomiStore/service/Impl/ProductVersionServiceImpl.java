@@ -41,4 +41,14 @@ public class ProductVersionServiceImpl implements ProductVersionService {
     public List<ProductVersion> selectAll() {
         return productVersionDao.selectAll();
     }
+
+    @Override
+    public String getDetailVersionByVersionId(String versionId) {
+        return productVersionDao.getDetailVersionByVersionId(versionId);
+    }
+
+    @Override
+    public String getVersionIdByDetailVersion(String detailVersion) {
+        return productVersionDao.getVersionIdByDetailVersion(detailVersion);
+    }
 }

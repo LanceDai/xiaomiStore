@@ -1,3 +1,6 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page isELIgnored="false" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -17,9 +20,9 @@
 			<div class="wxts fl ml20">温馨提示：产品是否购买成功，以最终下单为准哦，请尽快结算</div>
 			<div class="dlzc fr">
 				<ul>
-					<li><a href="login.jsp" target="_blank">登录</a></li>
+					<li><a href="/login" target="_self">登录</a></li>
 					<li>|</li>
-					<li><a href="register.jsp" target="_blank">注册</a></li>
+					<li><a href="/register" target="_self">注册</a></li>
 				</ul>
 				
 			</div>

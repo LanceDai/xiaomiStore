@@ -41,7 +41,7 @@
             </ul>
         </div>
         <div class="right fr">
-            <div class="gouwuche fr"><a href="">购物车</a></div>
+            <div class="gouwuche fr"><a href="/shoppingCart/">购物车</a></div>
             <div class="fr">
                 <ul>
                     <li><a href="login" target="_self">登录</a></li>
@@ -129,7 +129,7 @@
                             <div class="right fl" style="display: inline-block">
                                 <c:forEach items="${tl.productList}" begin="12" end="17" var="ple">
                                     <div style=" width: 265px; height:77px">
-                                        <a class="link" href=""/detail/${ple.productName}">
+                                        <a class="link" href="/detail/${ple.productName}">
                                             <img class="thumb" width="40px" height="40px"
                                                  src="../static/image/thumb/${ple.productName.replace(' ', '_').replace("\"", "")}.jpg">
                                             <span class="ttext">${ple.productName}</span>

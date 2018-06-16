@@ -1,20 +1,18 @@
 package com.xiaomiStore.controller;
 
-import com.google.code.kaptcha.Constants;
-import com.google.code.kaptcha.Producer;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
-
+import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.awt.image.BufferedImage;
-
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+import com.google.code.kaptcha.Constants;
+import com.google.code.kaptcha.Producer;
 @Controller
-@RequestMapping("/")
+//@RequestMapping("/")
 public class CaptchaImageCreateController {
 
     private Producer captchaProducer = null;
@@ -24,7 +22,7 @@ public class CaptchaImageCreateController {
         this.captchaProducer = captchaProducer;
     }
 
-    @RequestMapping("captcha-image")
+    @RequestMapping("/captcha-image")
 
     public ModelAndView handleRequest
             (HttpServletRequest request, HttpServletResponse response) throws Exception {

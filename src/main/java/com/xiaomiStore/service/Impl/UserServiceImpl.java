@@ -34,6 +34,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public User selectByUserName(String userName) {
+        return userDao.selectByUserName(userName);
+    }
+
+    @Override
     public int update(User record) {
         return userDao.update(record);
     }

@@ -11,11 +11,11 @@ import java.util.List;
 public interface ProductService {
     int insert( Product record);
 
-    int delete(int productId);
+    int delete(String productId);
 
     int update( Product record);
 
-    Product select(int productId);
+    Product select(String productId);
 
     List<Product> selectAll();
 
