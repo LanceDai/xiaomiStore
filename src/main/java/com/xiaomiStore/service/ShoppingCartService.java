@@ -10,9 +10,17 @@ public interface ShoppingCartService {
 
     List<ShoppingCart> selectAll();
 
+    List<ShoppingCart> selectByUserId(String userId);
+
     ShoppingCart selectByPrimaryKey(String cartId);
 
     int update(ShoppingCart record);
 
     int delete(String shoppingCartId);
+
+    Integer getNumberByUserIdAndSpecificationId(String userId, int specificationId);
+
+    ShoppingCart selectByUserIdAndSpecificationId(String userId, int specificationId);
+
+    int deleteByUserIdAndSpecificationId(String userId, int specificationId);
 }

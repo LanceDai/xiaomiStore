@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface OrderService {
 
-    public int insert(@Param("record") Order record);
+    public int insert(Order record);
 
     public int delete(String orderId);
 

@@ -14,11 +14,11 @@ public class LoginInterceptor implements HandlerInterceptor {
     @Autowired
     UserService userService;
 
+    @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handele) throws Exception {
         HttpSession session = request.getSession();
 
         User user = (User) session.getAttribute("loginUser");
-
         if (user == null) {
             response.sendRedirect("/login");
             return false;

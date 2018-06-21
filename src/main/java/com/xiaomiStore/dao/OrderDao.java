@@ -8,7 +8,7 @@ import java.util.List;
 @Mapper
 public interface OrderDao {
     @Insert("insert into xiaomi_order (orderId, userId, sum, createTime, status) " +
-            "values (#{record.orderID}, #{record.userID}, #{record.sum}, #{record.createTime}, #{record.status})")
+            "values (#{record.orderId}, #{record.userId}, #{record.sum}, #{record.createTime}, #{record.status})")
     int insert(@Param("record") Order record);
 
     @Delete("delete from xiaomi_order where orderId = #{orderId}")

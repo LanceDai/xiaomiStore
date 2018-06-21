@@ -23,4 +23,15 @@ public interface SpecificationService {
     Map<String, String> selectAllVersionWithProduct(String productId);
 
     String getMinPriceByProductId(String productId);
+
+    double getPriceBySpecificationId(int specificationId);
+
+    int getSpecificationIdByProductIdAndColorIdAndVersionId(
+            String productId, String versionId, String colorId);
+
+    String getColorNameBySpecificationId(int specificationId);
+
+    String getDetailVersionBySpecificationId(int specificationId);
+
+    String getProductNameBySpecificationId(int specificationId);
 }

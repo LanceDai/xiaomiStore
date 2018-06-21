@@ -41,13 +41,28 @@
             </ul>
         </div>
         <div class="right fr">
-            <div class="gouwuche fr"><a href="/shoppingCart/">购物车</a></div>
+            <div class="gouwuche fr"><a href="/shoppingCart">购物车</a></div>
             <div class="fr">
                 <ul>
-                    <li><a href="login" target="_self">登录</a></li>
-                    <li>|</li>
-                    <li><a href="register.jsp" target="_blank">注册</a></li>
-                    <li>|</li>
+                    <c:choose>
+                        <c:when test="${sessionScope.loginUser != null}">
+                            <li><a href="/selfInfo/" target="_self" style="height: 40px;">
+                                <img src="../static/image/head_portrait/${sessionScope.loginUser.img}"
+                                     onerror="this.src='../static/image/head_portrait/default.jpg'"
+                                style="width: 40px;height: 40px;border-radius: 20px">
+                            </a></li>
+                            <li>|</li>
+                            <li><a href="/user/logout" target="_self">登出</a></li>
+                            <li>|</li>
+                        </c:when>
+                        <c:otherwise>
+                            <li><a href="/login" target="_self">登录</a></li>
+                            <li>|</li>
+                            <li><a href="/register/" target="_self">注册</a></li>
+                            <li>|</li>
+                        </c:otherwise>
+                    </c:choose>
+
                     <li><a href="">消息通知</a></li>
                 </ul>
             </div>
@@ -60,7 +75,7 @@
 
 <!-- start banner_x -->
 <div class="banner_x center">
-    <a href="./index.jsp" target="_blank">
+    <a href="/" target="_blank">
         <div class="logo fl"></div>
     </a>
     <a href="">

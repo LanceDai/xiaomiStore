@@ -16,8 +16,12 @@ public interface SpecificationDao {
     int delete(@Param("colorId") String colorId, @Param("productId") String productId, @Param("versionId") String versionId);
 
     @Update("update xiaomi_specification set " +
+            "colorId = #{record.colorId}, " +
+            "productId = #{record.productId}, " +
             "versionId = #{record.versionId}, " +
-            "detailVersion = #{record.detailVersion}, ")
+            "stock = #{record.stock}, " +
+            "price = #{record.price}, " +
+            "specificationId = #{record.specificationId} ")
     int update(@Param("record") Specification record);
 
     @Select("SELECT * FROM xiaomi_specification WHERE colorId = #{colorId} AND productId = #{productId} AND versionId = #{versionId}")
@@ -36,12 +40,27 @@ public interface SpecificationDao {
     @Select("SELECT MIN(price) FROM xiaomi_specification WHERE productId = #{productId}")
     String getMinPriceByProductId(String productId);
 
+    @Select("SELECT price FROM xiaomi_specification WHERE specificationId = #{specificationId}")
+    double getPriceBySpecificationId(int specificationId);
+
+    @Select("SELECT colorName FROM xiaomi_specification AS s, xiaomi_color AS c " +
+            "WHERE s.specificationId = #{specificationId} AND c.colorId = s.colorId")
+    String getColorNameBySpecificationId(int specificationId);
+
+    @Select("SELECT detailVersion FROM xiaomi_specification AS s, xiaomi_product_version AS p " +
+            "WHERE s.specificationId = #{specificationId} AND p.versionId = s.versionId")
+    String getDetailVersionBySpecificationId(int specificationId);
+
+    @Select("SELECT productName FROM xiaomi_specification AS s, xiaomi_product AS p " +
+            "WHERE s.specificationId = #{specificationId} AND p.productId = s.productId")
+    String getProductNameBySpecificationId(int specificationId);
+
     @Select("SELECT specificationId " +
             "FROM xiaomi_specification " +
             "WHERE colorId = #{colorId} " +
             "AND productId = #{productId} " +
             "AND versionId = #{versionId}")
-    String getSpecificationIdByProductIdAndColorIdAndVersionId(@Param("productId") String productId,
-                                                               @Param("versionId") String versionId,
-                                                               @Param("colorId") String colorId);
+    int getSpecificationIdByProductIdAndColorIdAndVersionId(@Param("productId") String productId,
+                                                            @Param("versionId") String versionId,
+                                                            @Param("colorId") String colorId);
 }

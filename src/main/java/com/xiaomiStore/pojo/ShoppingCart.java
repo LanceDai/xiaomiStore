@@ -3,16 +3,16 @@ package com.xiaomiStore.pojo;
 public class ShoppingCart {
     private String cartId;
     private String userId;
-    private String versionId;
     private int number;
+    private int specificationId;
 
     @Override
     public String toString() {
         return "ShoppingCart{" +
                 "cartId='" + cartId + '\'' +
                 ", userId='" + userId + '\'' +
-                ", versionId='" + versionId + '\'' +
                 ", number=" + number +
+                ", specificationId=" + specificationId +
                 '}';
     }
 
@@ -32,14 +32,6 @@ public class ShoppingCart {
         this.userId = userId;
     }
 
-    public String getVersionId() {
-        return versionId;
-    }
-
-    public void setVersionId(String versionId) {
-        this.versionId = versionId;
-    }
-
     public int getNumber() {
         return number;
     }
@@ -48,15 +40,23 @@ public class ShoppingCart {
         this.number = number;
     }
 
-    public ShoppingCart() {
-
+    public int getSpecificationId() {
+        return specificationId;
     }
 
-    public ShoppingCart(String cartId, String userId, String versionId, int number) {
+    public void setSpecificationId(int specificationId) {
+        this.specificationId = specificationId;
+    }
+
+    public ShoppingCart(String cartId, String userId, int number, int specificationId) {
 
         this.cartId = cartId;
         this.userId = userId;
-        this.versionId = versionId;
         this.number = number;
+        this.specificationId = specificationId;
+    }
+
+    public ShoppingCart() {
+
     }
 }

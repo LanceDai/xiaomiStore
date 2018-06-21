@@ -1,7 +1,6 @@
 import com.xiaomiStore.dao.ShoppingCartDao;
 import com.xiaomiStore.dao.UserDao;
 import com.xiaomiStore.pojo.ShoppingCart;
-import com.xiaomiStore.service.UserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,12 +24,12 @@ public class SQLTest {
     }
     @Test
     public void shoppingCartMapperTest() {
-        //controllerTest insert
-        for (int i = 0; i < 10; i++) {
-            ShoppingCart shoppingCart = new ShoppingCart(String.valueOf(i * 10 + 1), String.valueOf(i * 100 + 1),
-                    String.valueOf(i * 1000 + 1), 10000 * i + 1);
-            shoppingCartDao.insert(shoppingCart);
-        }
+//        //controllerTest insert
+//        for (int i = 0; i < 10; i++) {
+//            ShoppingCart shoppingCart = new ShoppingCart(String.valueOf(i * 10 + 1), String.valueOf(i * 100 + 1),
+//                    10000 * i + 1, specificationId);
+//            shoppingCartDao.insert(shoppingCart);
+//        }
 
         //controllerTest Select
         List<ShoppingCart> shoppingCartList = shoppingCartDao.selectAll();

@@ -31,4 +31,9 @@ public class AttentionServiceImpl implements AttentionService {
     public List<Attention> select(String userId) {
         return attentionDao.select(userId);
     }
+
+    @Override
+    public Integer isExistByUserIdAndProductId(String userId, String productId) {
+        return attentionDao.isExistByUserIdAndProductId(userId, productId);
+    }
 }

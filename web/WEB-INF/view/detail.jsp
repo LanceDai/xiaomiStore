@@ -7,6 +7,24 @@
     <meta charset="UTF-8">
     <title>${productDetail.productName}立即购买-小米商城</title>
     <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+    <style>
+        .xiadan .button {
+            height: 50px;
+            width: 200px;
+            border: none;
+            background: #ff6700;
+            color: #fff;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-right: 50px;
+        }
+
+        .xiadan .button:hover {
+            border: 1px solid #fff;
+        }
+
+    </style>
     <script src="../static/js/jquery.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
@@ -74,11 +92,26 @@
 
             $("#buy").click(function () {
                 buyOrAdd();
+                alert("购买成功");
                 window.location = "/shoppingCart";
             });
 
             $("#add").click(function () {
                 buyOrAdd();
+                alert("添加成功")
+            })
+
+            $("#attention").click(function () {
+                $.post("/attention", {
+                    productName: productName.text(),
+                }, function (data) {
+                    console.log(data);
+                    if (data === "true"){
+                        $("#attention img").attr("src", "../static/image/爱心1.png")
+                    } else{
+                        $("#attention img").attr("src", "../static/image/爱心0.png")
+                    }
+                })
             })
 
         })
@@ -117,10 +150,24 @@
             <div class="gouwuche fr"><a href="/shoppingCart">购物车</a></div>
             <div class="fr">
                 <ul>
-                    <li><a href="/login" target="_self">登录</a></li>
-                    <li>|</li>
-                    <li><a href="/register" target="_self">注册</a></li>
-                    <li>|</li>
+                    <c:choose>
+                        <c:when test="${sessionScope.loginUser != null}">
+                            <li><a href="/selfInfo/" target="_self" style="height: 40px;">
+                                <img src="../static/image/head_portrait/${sessionScope.loginUser.img}"
+                                     onerror="this.src='../static/image/head_portrait/default.jpg'"
+                                     style="width: 40px;height: 40px;border-radius: 20px; margin: 0 10px;">
+                            </a></li>
+                            <li>|</li>
+                            <li><a href="/user/logout" target="_self">登出</a></li>
+                            <li>|</li>
+                        </c:when>
+                        <c:otherwise>
+                            <li><a href="/login" target="_self">登录</a></li>
+                            <li>|</li>
+                            <li><a href="/register/" target="_self">注册</a></li>
+                            <li>|</li>
+                        </c:otherwise>
+                    </c:choose>
                     <li><a href="">消息通知</a></li>
                 </ul>
             </div>
@@ -173,18 +220,13 @@
     <div class="detail">
         <div class="content w">
             <div class="product_header fl" id="product_name">${productDetail.productName}</div>
-            <nav class="fr">
-                <li><a href="">概述</a></li>
-                <li>|</li>
-                <li><a href="">变焦双摄</a></li>
-                <li>|</li>
-                <li><a href="">设计</a></li>
-                <li>|</li>
-                <li><a href="">参数</a></li>
-                <li>|</li>
-                <li><a href="">F码通道</a></li>
-                <li>|</li>
-                <li><a href="">用户评价</a></li>
+            <nav style="float: right;">
+                <a href="">概述</a>|
+                <a href="">变焦双摄</a>|
+                <a href="">设计</a>|
+                <a href="">参数</a>|
+                <a href="">F码通道</a>|
+                <a href="">用户评价</a>
                 <div class="clear"></div>
             </nav>
             <div class="clear"></div>
@@ -232,13 +274,16 @@
                     <div class="right1 fr" id="price"></div>
                     <div class="clear"></div>
                 </div>
-                <div class="bot mt20 ft20 ftbc" id="sum_price">
+                <div class="bot mt20 ft20 ftbc" id="sum_price"
+                     style="width: 230px; display: inline-block; margin: 15px 0">
+                </div>
+                <div id="attention" style="float: right; display: inline-block;">
+                    <img src="../static/image/爱心0.png" style="height: 26.4px; width: 20px;  margin: 15px 0">
                 </div>
             </div>
             <div class="xiadan ml20 mt20" style="margin: 15px 58px">
                 <input class="button" type="button" name="button" id="buy" value="立即选购"/>
                 <input class="button" type="button" name="button" id="add" value="加入购物车"/>
-
             </div>
         </div>
         <div class="clear"></div>

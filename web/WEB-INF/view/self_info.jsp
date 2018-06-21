@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 	<head>
 		<meta charset="UTF-8">
@@ -11,7 +11,7 @@
 			<div class="top center">
 				<div class="left fl">
 					<ul>
-						<li><a href="http://www.mi.com/" target="_blank">小米商城</a></li>
+						<li><a href="http://www.mi.com/" target="_self">小米商城</a></li>
 						<li>|</li>
 						<li><a href="">MIUI</a></li>
 						<li>|</li>
@@ -37,11 +37,8 @@
 					<div class="gouwuche fr"><a href="dingdanzhongxin.jsp">我的订单</a></div>
 					<div class="fr">
 						<ul>
-							<li><a href="login.jsp" target="_blank">登录</a></li>
-							<li>|</li>
-							<li><a href="register.jsp" target="_blank" >注册</a></li>
-							<li>|</li>
-							<li><a href="#top">个人中心</a></li>
+							<li><a href="#top">消息通知</a></li>
+							<li><a href="">我的订单</a> </li>
 						</ul>
 					</div>
 					<div class="clear"></div>
@@ -52,7 +49,7 @@
 	<!--end header -->
 	<!-- start banner_x -->
 		<div class="banner_x center">
-			<a href="index.jsp" target="_blank"><div class="logo fl"></div></a>
+			<a href="/" target="_self"><div class="logo fl"></div></a>
 			<a href=""><div class="ad_top fl"></div></a>
 			<div class="nav fl">
 				<ul>
@@ -70,7 +67,7 @@
 			<div class="search fr">
 				<form action="" method="post">
 					<div class="text fl">
-						<input type="text" class="shuru"  placeholder="小米6&nbsp;小米MIX现货">
+						<input type="text" class="shuru"  placeholder="小米8&nbsp;小米MIX2S现货">
 					</div>
 					<div class="submit fl">
 						<input type="submit" class="sousuo" value="搜索"/>
@@ -97,7 +94,7 @@
 			<div class="ddzx">个人中心</div>
 			<div class="subddzx">
 				<ul>
-					<li><a href="./self_info.jsp" style="color:#ff6700;font-weight:bold;">我的个人中心</a></li>
+					<li><a href="./self_info" style="color:#ff6700;font-weight:bold;">我的个人中心</a></li>
 					<li><a href="">消息通知</a></li>
 					<li><a href="">优惠券</a></li>
 					<li><a href="">收货地址</a></li>

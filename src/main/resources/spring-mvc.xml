@@ -24,6 +24,7 @@
     <mvc:resources mapping="/static/js/**" location="WEB-INF/static/js/"/>
     <mvc:resources mapping="/static/css/**" location="WEB-INF/static/css/"/>
     <mvc:resources mapping="/static/image/**" location="WEB-INF/static/image/"/>
+    <mvc:resources mapping="/static/layui/**" location="WEB-INF/static/layui/"/>
 
     <mvc:annotation-driven enable-matrix-variables="true"/>
 

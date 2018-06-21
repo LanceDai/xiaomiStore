@@ -2,15 +2,15 @@
 Navicat MySQL Data Transfer
 
 Source Server         : MySQL
-Source Server Version : 50717
+Source Server Version : 50722
 Source Host           : localhost:3306
 Source Database       : xiaomi
 
 Target Server Type    : MYSQL
-Target Server Version : 50717
+Target Server Version : 50722
 File Encoding         : 65001
 
-Date: 2018-06-13 11:38:38
+Date: 2018-06-21 19:00:25
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -21,9 +21,9 @@ SET FOREIGN_KEY_CHECKS=0;
 DROP TABLE IF EXISTS `xiaomi_attention`;
 CREATE TABLE `xiaomi_attention` (
   `userId` varchar(255) NOT NULL DEFAULT '',
-  `pruductId` varchar(255) DEFAULT NULL,
+  `productId` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`userId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of xiaomi_attention
@@ -37,11 +37,14 @@ CREATE TABLE `xiaomi_color` (
   `colorId` varchar(30) NOT NULL DEFAULT '',
   `colorName` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`colorId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of xiaomi_color
 -- ----------------------------
+INSERT INTO `xiaomi_color` VALUES ('#000000', '黑色');
+INSERT INTO `xiaomi_color` VALUES ('#0000FF', '蓝色');
+INSERT INTO `xiaomi_color` VALUES ('#ffffff', '白色');
 
 -- ----------------------------
 -- Table structure for xiaomi_comment
@@ -54,7 +57,7 @@ CREATE TABLE `xiaomi_comment` (
   `createTime` varchar(255) DEFAULT NULL,
   `comment` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`commentId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of xiaomi_comment
@@ -71,11 +74,13 @@ CREATE TABLE `xiaomi_coupon` (
   `description` varchar(255) DEFAULT NULL,
   `status` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`couponId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of xiaomi_coupon
 -- ----------------------------
+INSERT INTO `xiaomi_coupon` VALUES ('1', 'aaaaaa', '1111', 'jsahdjashj', '1');
+INSERT INTO `xiaomi_coupon` VALUES ('2', 'bbbbb', '12345', 'sdsaasd', '2');
 
 -- ----------------------------
 -- Table structure for xiaomi_order
@@ -85,10 +90,10 @@ CREATE TABLE `xiaomi_order` (
   `orderId` varchar(20) NOT NULL DEFAULT '' COMMENT '订单编号',
   `userId` varchar(20) NOT NULL DEFAULT '' COMMENT '用户编号',
   `sum` int(11) NOT NULL DEFAULT '0' COMMENT '总价',
-  `createTime` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `createTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `status` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`orderId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='订单表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of xiaomi_order
@@ -104,7 +109,7 @@ CREATE TABLE `xiaomi_product` (
   `productDescription` varchar(255) NOT NULL DEFAULT '',
   `typeId` varchar(255) NOT NULL DEFAULT '',
   PRIMARY KEY (`productId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of xiaomi_product
@@ -143,7 +148,6 @@ INSERT INTO `xiaomi_product` VALUES ('126', '小米路由器3C', '', '7');
 INSERT INTO `xiaomi_product` VALUES ('127', '小米路由器3G', '', '7');
 INSERT INTO `xiaomi_product` VALUES ('128', '小米路由器3A', '', '7');
 INSERT INTO `xiaomi_product` VALUES ('129', '小米路由器Pro', '', '7');
-INSERT INTO `xiaomi_product` VALUES ('13', '移动4G+专区', '', '1');
 INSERT INTO `xiaomi_product` VALUES ('130', '小米路由器HD', '', '7');
 INSERT INTO `xiaomi_product` VALUES ('131', 'WiFi放大器2', '', '7');
 INSERT INTO `xiaomi_product` VALUES ('132', 'WiFi放大器Pro', '', '7');
@@ -154,7 +158,6 @@ INSERT INTO `xiaomi_product` VALUES ('136', '千兆网线', '', '7');
 INSERT INTO `xiaomi_product` VALUES ('137', '手机保护套', '', '7');
 INSERT INTO `xiaomi_product` VALUES ('138', '手机贴膜', '', '7');
 INSERT INTO `xiaomi_product` VALUES ('139', '自拍杆', '', '7');
-INSERT INTO `xiaomi_product` VALUES ('14', '对比手机', '', '1');
 INSERT INTO `xiaomi_product` VALUES ('140', '数据线', '', '7');
 INSERT INTO `xiaomi_product` VALUES ('142', '黑鲨配件', '', '7');
 INSERT INTO `xiaomi_product` VALUES ('143', '新小米移动电源2', '', '8');
@@ -186,7 +189,6 @@ INSERT INTO `xiaomi_product` VALUES ('166', '小米头戴式耳机', '', '9');
 INSERT INTO `xiaomi_product` VALUES ('167', '小米运动蓝牙耳机', '', '9');
 INSERT INTO `xiaomi_product` VALUES ('168', '小米运动蓝牙耳机mini', '', '9');
 INSERT INTO `xiaomi_product` VALUES ('169', '小米蓝牙耳机', '', '9');
-INSERT INTO `xiaomi_product` VALUES ('17', '手机上门维修', '', '1');
 INSERT INTO `xiaomi_product` VALUES ('170', '小米蓝牙音频接收器', '', '9');
 INSERT INTO `xiaomi_product` VALUES ('171', '小米头戴式耳机 轻松版', '', '9');
 INSERT INTO `xiaomi_product` VALUES ('172', '品牌耳机', '', '9');
@@ -320,23 +322,26 @@ CREATE TABLE `xiaomi_product_version` (
   `versionId` varchar(20) NOT NULL DEFAULT '',
   `detailVersion` varchar(255) NOT NULL DEFAULT '',
   PRIMARY KEY (`versionId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of xiaomi_product_version
 -- ----------------------------
+INSERT INTO `xiaomi_product_version` VALUES ('1', '全网通版 6GB+64GB');
+INSERT INTO `xiaomi_product_version` VALUES ('2', '全网通版 6GB+128GB');
+INSERT INTO `xiaomi_product_version` VALUES ('3', '全网通版 6GB+256GB');
 
 -- ----------------------------
 -- Table structure for xiaomi_shopping_cart
 -- ----------------------------
 DROP TABLE IF EXISTS `xiaomi_shopping_cart`;
 CREATE TABLE `xiaomi_shopping_cart` (
-  `cartId` varchar(20) NOT NULL DEFAULT '',
+  `cartId` varchar(255) NOT NULL DEFAULT '',
   `userId` varchar(255) NOT NULL DEFAULT '',
-  `versionId` varchar(255) NOT NULL DEFAULT '',
   `number` int(11) NOT NULL DEFAULT '0',
+  `specificationId` int(11) NOT NULL,
   PRIMARY KEY (`cartId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of xiaomi_shopping_cart
@@ -348,16 +353,26 @@ CREATE TABLE `xiaomi_shopping_cart` (
 DROP TABLE IF EXISTS `xiaomi_specification`;
 CREATE TABLE `xiaomi_specification` (
   `colorId` varchar(255) NOT NULL DEFAULT '' COMMENT '具体商品',
-  `productId` varchar(255) DEFAULT NULL,
-  `versionId` varchar(255) DEFAULT NULL,
+  `productId` varchar(255) NOT NULL,
+  `versionId` varchar(255) NOT NULL,
   `stock` varchar(255) DEFAULT NULL,
   `price` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`colorId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `specificationId` int(255) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`specificationId`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of xiaomi_specification
 -- ----------------------------
+INSERT INTO `xiaomi_specification` VALUES ('#000000', '1', '1', '100', '2699', '1');
+INSERT INTO `xiaomi_specification` VALUES ('#000000', '1', '2', '100', '2999', '2');
+INSERT INTO `xiaomi_specification` VALUES ('#000000', '1', '3', '100', '3299', '3');
+INSERT INTO `xiaomi_specification` VALUES ('#0000FF', '1', '1', '100', '2699', '4');
+INSERT INTO `xiaomi_specification` VALUES ('#0000FF', '1', '2', '100', '2999', '5');
+INSERT INTO `xiaomi_specification` VALUES ('#0000FF', '1', '3', '100', '3299', '6');
+INSERT INTO `xiaomi_specification` VALUES ('#ffffff', '1', '1', '100', '2699', '7');
+INSERT INTO `xiaomi_specification` VALUES ('#ffffff', '1', '2', '100', '2999', '8');
+INSERT INTO `xiaomi_specification` VALUES ('#ffffff', '1', '3', '100', '3299', '9');
 
 -- ----------------------------
 -- Table structure for xiaomi_type
@@ -368,7 +383,7 @@ CREATE TABLE `xiaomi_type` (
   `name` varchar(255) NOT NULL DEFAULT '',
   `parentId` varchar(20) NOT NULL DEFAULT '',
   PRIMARY KEY (`typeId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of xiaomi_type
@@ -401,14 +416,14 @@ CREATE TABLE `xiaomi_user` (
   `userId` varchar(255) NOT NULL DEFAULT '',
   `userName` varchar(20) NOT NULL DEFAULT '',
   `telephoneNumber` varchar(20) DEFAULT '',
-  `createTime` timestamp NULL DEFAULT NULL,
+  `createTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `img` varchar(255) DEFAULT '',
   `hobby` varchar(255) DEFAULT '',
   `address` varchar(255) DEFAULT NULL,
   `sign` varchar(255) DEFAULT '',
   `password` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`userId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of xiaomi_user
@@ -416,4 +431,7 @@ CREATE TABLE `xiaomi_user` (
 INSERT INTO `xiaomi_user` VALUES ('1', 'linhao1', '', '2018-06-08 11:33:56', '', '', null, '', '123456');
 INSERT INTO `xiaomi_user` VALUES ('111', 'linhao', '3212132332321', '2018-06-08 11:33:56', '123', '123', 'sakhdjkas', '123', '123');
 INSERT INTO `xiaomi_user` VALUES ('2', 'dailianghui', '', '2018-06-08 11:33:56', '', '', null, '', '123456');
+INSERT INTO `xiaomi_user` VALUES ('626f33ca-1f22-4656-8e89-cdcd756b6269', 'lll', '13757107731', '2018-06-16 02:42:49', null, null, null, null, '1235');
+INSERT INTO `xiaomi_user` VALUES ('87949b33-4fde-40b7-9886-b7a9f5aab328', 'lance', '13757107731', '2018-06-16 02:41:06', null, null, null, null, '1234');
 INSERT INTO `xiaomi_user` VALUES ('9a9eb929-5c4c-4d61-913e-f003ebf2b3eb', 'dlh', '1234', '2018-06-09 13:23:20', null, null, null, null, '123');
+INSERT INTO `xiaomi_user` VALUES ('bc30f342-2a84-4818-9ae4-c753b6be254f', '111', '13757107737', '2018-06-16 02:43:15', null, null, null, null, '1456');

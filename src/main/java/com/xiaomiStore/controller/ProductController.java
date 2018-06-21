@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -32,9 +33,10 @@ public class ProductController {
     }
 
     @RequestMapping("/detail/{productName}")
-    public String showDetail(@PathVariable("productName") String productName, Model model) {
+    public String showDetail(@PathVariable("productName") String productName, Model model,
+                             HttpSession httpSession) {
         System.out.println("productName = " + productName);
-
+        //从数据库得到商品详细信息
         ProductDetail productDetail = new ProductDetail();
         productDetail.setProductName(productName);
         String productId = productService.getProductIdByProductName(productName);
@@ -49,6 +51,7 @@ public class ProductController {
     @RequestMapping("/search/{TypeName}")
     public String showAllProductsWithType(@PathVariable("TypeName") String typeName, Model model) {
         System.out.println("typeName = " + typeName);
+        //从数据库得到此类下的所有商品
         Map<String, String> productMap = new HashMap<>();
         String typeId = typeService.getTypeIdByTypeName(typeName);
         List<Product> productList = productService.selectByTypeId(typeId);
@@ -61,6 +64,4 @@ public class ProductController {
         model.addAttribute("typeName", typeName);
         return "resultSet";
     }
-
-
 }

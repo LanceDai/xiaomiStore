@@ -59,7 +59,7 @@ public class RegisterController {
         user.setUserId(String.valueOf(UUID.randomUUID()));
         user.setUserName(username);
         user.setTelephoneNumber(telephoneNumber);
-        user.setCreateTime(new Timestamp(new Date().getTime()));
+        user.setCreateTime(new Timestamp(System.currentTimeMillis()));
         user.setPassword(password);
         System.out.println(user);
         userService.insert(user);

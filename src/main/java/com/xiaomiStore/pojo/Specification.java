@@ -6,6 +6,7 @@ public class Specification {
     private String versionId;
     private String stock;
     private String price;
+    private int specificationId;
 
     @Override
     public String toString() {
@@ -15,23 +16,11 @@ public class Specification {
                 ", versionId='" + versionId + '\'' +
                 ", stock='" + stock + '\'' +
                 ", price='" + price + '\'' +
+                ", specificationId=" + specificationId +
                 '}';
     }
 
-    public Specification(String colorId, String productId, String versionId, String stock, String price) {
-        this.colorId = colorId;
-        this.productId = productId;
-        this.versionId = versionId;
-        this.stock = stock;
-        this.price = price;
-    }
-
-    public Specification() {
-
-    }
-
     public String getColorId() {
-
         return colorId;
     }
 
@@ -69,5 +58,27 @@ public class Specification {
 
     public void setPrice(String price) {
         this.price = price;
+    }
+
+    public int getSpecificationId() {
+        return specificationId;
+    }
+
+    public void setSpecificationId(int specificationId) {
+        this.specificationId = specificationId;
+    }
+
+    public Specification(String colorId, String productId, String versionId, String stock, String price, int specificationId) {
+
+        this.colorId = colorId;
+        this.productId = productId;
+        this.versionId = versionId;
+        this.stock = stock;
+        this.price = price;
+        this.specificationId = specificationId;
+    }
+
+    public Specification() {
+
     }
 }

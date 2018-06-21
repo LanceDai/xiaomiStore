@@ -80,4 +80,29 @@ public class SpecificationServiceImpl implements SpecificationService {
     public String getMinPriceByProductId(String productId) {
         return specificationDao.getMinPriceByProductId(productId);
     }
+
+    @Override
+    public double getPriceBySpecificationId(int specificationId) {
+        return specificationDao.getPriceBySpecificationId(specificationId);
+    }
+
+    @Override
+    public int getSpecificationIdByProductIdAndColorIdAndVersionId(String productId, String versionId, String colorId) {
+        return specificationDao.getSpecificationIdByProductIdAndColorIdAndVersionId(productId, colorId, versionId);
+    }
+
+    @Override
+    public String getColorNameBySpecificationId(int specificationId) {
+        return specificationDao.getColorNameBySpecificationId(specificationId);
+    }
+
+    @Override
+    public String getDetailVersionBySpecificationId(int specificationId) {
+        return specificationDao.getDetailVersionBySpecificationId(specificationId);
+    }
+
+    @Override
+    public String getProductNameBySpecificationId(int specificationId) {
+        return specificationDao.getProductNameBySpecificationId(specificationId);
+    }
 }

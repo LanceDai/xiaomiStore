@@ -37,10 +37,12 @@ public class ColorServiceImpl implements ColorService {
         return colorDao.selectAll();
     }
 
+    @Override
     public String getColorNameByColorId(String colorId) {
         return colorDao.getColorNameByColorId(colorId);
     }
 
+    @Override
     public String getColorIdByColorName(String colorName) {
         return colorDao.getColorIdByColorName(colorName);
     }
