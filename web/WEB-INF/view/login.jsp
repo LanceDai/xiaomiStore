@@ -71,7 +71,7 @@
                 data: {
                     'username': username,
                     'password': password,
-                    'code': code,
+                    'code': code
                 },
                 success: function (result) {
                     var data = JSON.parse(JSON.stringify(result));

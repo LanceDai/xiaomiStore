@@ -43,23 +43,32 @@ public class ShoppingCartController {
     public String shoppingCart(Model model, HttpSession session) {
         //得到session域中已登录的用户信息
         User loginUser = (User) session.getAttribute("loginUser");
-        //从数据库中读取当前用户的购物车记录
+        //构造购物车记录列表
         List<ShoppingCartList> shoppingCartLists = new ArrayList<>();
+        //从数据库中读取当前用户的购物车记录
         List<ShoppingCart> shoppingCarts = shoppingCartService.selectByUserId(loginUser.getUserId());
+        //对shoppingCartLists进行遍历得到商品的具体信息
         for (ShoppingCart s : shoppingCarts) {
+            //构造购物车记录对象
             ShoppingCartList shoppingCartList = new ShoppingCartList();
+            //从数据库得到商品名
             shoppingCartList.setProductName(
                     specificationService.getProductNameBySpecificationId(s.getSpecificationId()));
+            //从数据库得到商品具体版本
             shoppingCartList.setDetailVersion(
                     specificationService.getDetailVersionBySpecificationId(s.getSpecificationId()));
+            //从数据库得到商品颜色
             shoppingCartList.setColorName(
                     specificationService.getColorNameBySpecificationId(s.getSpecificationId()));
+            //从数据库得到商品数目
             shoppingCartList.setNumber(s.getNumber());
+            //从数据库得到商品价格
             shoppingCartList.setPrice(specificationService.
                     getPriceBySpecificationId(s.getSpecificationId()));
+            //将购物车记录加入至shoppingCartLists
             shoppingCartLists.add(shoppingCartList);
         }
-        System.out.println("shoppingCartLists = " + shoppingCartLists);
+        //将shoppingCartLists加入至model
         model.addAttribute("shoppingCartList", shoppingCartLists);
         return "shoppingCart";
     }
@@ -71,11 +80,6 @@ public class ShoppingCartController {
                     @RequestParam("color") String color,
                     @RequestParam(value = "number", required = false) Integer num,
                     HttpSession httpSession) {
-        System.out.println("buy!!!");
-        System.out.println("productName = " + productName.trim());
-        System.out.println("version = " + version.trim());
-        System.out.println("color = " + color.trim());
-        System.out.println("num = " + num);
         //格式化
         color = color.trim();
         productName = productName.trim();
@@ -127,19 +131,12 @@ public class ShoppingCartController {
                        @RequestParam("version") String version,
                        @RequestParam("color") String color,
                        HttpSession httpSession) {
-        System.out.println("delete!!!");
-        System.out.println("productName = " + productName.trim());
-        System.out.println("version = " + version.trim());
-        System.out.println("color = " + color.trim());
         //格式化
         color = color.trim();
         productName = productName.trim();
         version = version.trim();
         //得到session域中已登录的用户信息
         User loginUser = (User) httpSession.getAttribute("loginUser");
-        System.out.println("productId = " + productService.getProductIdByProductName(productName));
-        System.out.println("versionId = " + productVersionService.getVersionIdByDetailVersion(version));
-        System.out.println("colorId = " + colorService.getColorIdByColorName(color));
         //得到具体商品ID
         int specificationId =
                 specificationService.getSpecificationIdByProductIdAndColorIdAndVersionId(
@@ -163,7 +160,8 @@ public class ShoppingCartController {
         order.setOrderId(UUID.randomUUID().toString());
         order.setSum(sum);
         order.setUserId(loginUser.getUserId());
-        order.setTimestamp(new Timestamp(System.currentTimeMillis()));
+        order.setCreateTime(new Timestamp(System.currentTimeMillis()));
+        order.setStatus(String.valueOf(0));
         orderService.insert(order);
     }
 }

@@ -1,105 +1,49 @@
-
-<ul>
-    <li>
-        <div class="pop" style="display: flex;flex-wrap: wrap;flex-direction: column;">
-            <div class="left f1" style="display: flex;">
-                <c:forEach items="${tl.productList}" end="5" var="pll">
-                    <div style="flex-grow: 1;">
-                        <a class="link" href="">
-                            <img class="thumb"
-                                 src="../static/image/thumb/${pll.productName.replace(' ', '_').replace("\"", "")}.jpg">
-                            <span class="ttext">${pll.productName}</span>
-                        </a>
-                    </div>
-                </c:forEach>
+<div>
+    <div >
+        <!--加载商品图片-->
+        <img src="../static/image/thumb/${productDetail.productName}.jpg">
+    </div>
+    <div>
+        <div>${productDetail.productName}</div>
+        <div>${productDetail.versionList.values().iterator().next()}.00元</div>
+        <div>选择版本</div>
+        <div id="version">
+            <!--通过<c:forEach>得到商品的版本集合-->
+            <c:forEach items="${productDetail.versionList}" var="pdvl">
+                <div >
+                    <a>
+                        <span>${pdvl.key}</span>
+                        <span>${pdvl.value}</span>
+                    </a>
+                </div>
+            </c:forEach>
+        </div>
+        <div>选择颜色</div>
+        <div id="color">
+            <!--通过<c:forEach>得到商品的颜色集合-->
+            <c:forEach items="${productDetail.colorList}" var="pdcl">
+                <div >
+                    <a>
+                        <span ></span>
+                        <span >${pdcl.value}</span>
+                    </a>
+                </div>
+            </c:forEach>
+        </div>
+        <div></div>
+        <div>
+            <div>
+                <div id="sum_text"></div>
+                <div  id="price"></div>
             </div>
-            <div class="cnt f1"style="display: flex;">
-                <c:forEach items="${tl.productList}" begin="6" end="11" var="plc">
-                    <div style="flex-grow: 1;">
-                        <a class="link" href="">
-                            <img class="thumb"
-                                 src="../static/image/thumb/${plc.productName.replace(' ', '_').replace("\"", "")}.jpg">
-                            <span class="ttext">${plc.productName}</span>
-                        </a>
-                    </div>
-                </c:forEach>
-            </div>
-            <div class="right f1" style="display: flex;">
-                <c:forEach items="${tl.productList}" begin="12" end="17" var="ple">
-                    <div style="flex-grow: 1;">
-                        <a class="link" href="">
-                            <img class="thumb"
-                                 src="../static/image/thumb/${ple.productName.replace(' ', '_').replace("\"", "")}.jpg">
-                            <span class="ttext">${ple.productName}</span>
-                        </a>
-                    </div>
-                </c:forEach>
+            <div id="sum_price"></div>
+            <div id="attention">
+                <img src="../static/image/爱心0.png">
             </div>
         </div>
-    </li>
-
-    <%--<li>--%>
-    <%--<div class="pop" style="display: flex;flex-wrap: wrap;flex-direction: column;">--%>
-        <%--<div class="left f1" style="display: flex;">--%>
-
-            <%--<div style="flex-grow: 1;">--%>
-                <%--<a class="link" href="">--%>
-                    <%--<img class="thumb" src="../static/image/thumb/小米8.jpg" style="display: block;">--%>
-                    <%--<span class="ttext">小米8</span>--%>
-                    <%--</a>--%>
-                <%--</div>--%>
-
-            <%--<div style="flex-grow: 1;">--%>
-                <%--<a class="link" href="">--%>
-                    <%--<img class="thumb" src="../static/image/thumb/红米5_Plus.jpg"--%>
-                    <%--style="display: block;">--%>
-                    <%--<span class="ttext">红米5 Plus</span>--%>
-                    <%--</a>--%>
-                <%--</div>--%>
-
-            <%--<div style="flex-grow: 1;">--%>
-                <%--<a class="link" href="">--%>
-                    <%--<img class="thumb" src="../static/image/thumb/红米5.jpg" style="--%>
-                        <%--display: block;--%>
-                        <%--">--%>
-                    <%--<span class="ttext">红米5</span>--%>
-                    <%--</a>--%>
-                <%--</div>--%>
-
-            <%--<div style="flex-grow: 1;">--%>
-                <%--<a class="link" href="">--%>
-                    <%--<img class="thumb" src="../static/image/thumb/红米5A.jpg" style="--%>
-                        <%--display: block;--%>
-                        <%--">--%>
-                    <%--<span class="ttext">红米5A</span>--%>
-                    <%--</a>--%>
-                <%--</div>--%>
-
-            <%--<div style="--%>
-                        <%--flex-grow: 1;--%>
-                        <%--">--%>
-                <%--<a class="link" href="">--%>
-                    <%--<img class="thumb" src="../static/image/thumb/移动4G+专区.jpg" style="--%>
-                        <%--display: block;--%>
-                        <%--">--%>
-                    <%--<span class="ttext">移动4G+专区</span>--%>
-                    <%--</a>--%>
-                <%--</div>--%>
-
-            <%--<div style="--%>
-                        <%--flex-grow: 1;--%>
-                        <%--">--%>
-                <%--<a class="link" href="">--%>
-                    <%--<img class="thumb" src="../static/image/thumb/对比手机.jpg" style="--%>
-                        <%--display: block;--%>
-                        <%--">--%>
-                    <%--<span class="ttext">对比手机</span>--%>
-                    <%--</a>--%>
-                <%--</div>--%>
-
-            <%--</div>--%>
-        <%--</div>--%>
-    <%--</li>--%>
-
-
-</ul>
+        <div>
+            <input  type="button" name="button" id="buy" value="立即选购"/>
+            <input  type="button" name="button" id="add" value="加入购物车"/>
+        </div>
+    </div>
+</div>

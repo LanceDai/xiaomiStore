@@ -3,7 +3,9 @@ package com.xiaomiStore.dao;
 import com.xiaomiStore.pojo.Order;
 import org.apache.ibatis.annotations.*;
 
+import java.sql.Timestamp;
 import java.util.List;
+import java.util.Map;
 
 @Mapper
 public interface OrderDao {
@@ -19,4 +21,8 @@ public interface OrderDao {
 
     @Select("select * from xiaomi_order")
     List<Order> selectAll();
+
+    @Select("SELECT createTime, sum FROM xiaomi_order ORDER BY createTime")
+    @MapKey("createTime")
+    Map<Timestamp, Map<String, Object>> selectTimeAndPrice();
 }

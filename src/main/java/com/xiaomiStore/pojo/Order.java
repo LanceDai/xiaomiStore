@@ -6,19 +6,8 @@ public class Order {
     private String orderId;
     private String userId;
     private int sum;
-    private Timestamp timestamp;
+    private Timestamp createTime;
     private String status;
-
-    @Override
-    public String toString() {
-        return "Order{" +
-                "orderId='" + orderId + '\'' +
-                ", userId='" + userId + '\'' +
-                ", sum=" + sum +
-                ", timestamp=" + timestamp +
-                ", status='" + status + '\'' +
-                '}';
-    }
 
     public String getOrderId() {
         return orderId;
@@ -44,12 +33,12 @@ public class Order {
         this.sum = sum;
     }
 
-    public Timestamp getTimestamp() {
-        return timestamp;
+    public Timestamp getCreateTime() {
+        return createTime;
     }
 
-    public void setTimestamp(Timestamp timestamp) {
-        this.timestamp = timestamp;
+    public void setCreateTime(Timestamp createTime) {
+        this.createTime = createTime;
     }
 
     public String getStatus() {
@@ -60,16 +49,16 @@ public class Order {
         this.status = status;
     }
 
-    public Order() {
-
-    }
-
-    public Order(String orderId, String userId, int sum, Timestamp timestamp, String status) {
+    public Order(String orderId, String userId, int sum, Timestamp createTime, String status) {
 
         this.orderId = orderId;
         this.userId = userId;
         this.sum = sum;
-        this.timestamp = timestamp;
+        this.createTime = createTime;
         this.status = status;
+    }
+
+    public Order() {
+
     }
 }

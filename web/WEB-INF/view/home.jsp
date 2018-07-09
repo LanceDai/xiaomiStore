@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>Home</title>
+    <title>小米商城后台管理系统</title>
     <link rel="stylesheet" href="../static/layui/css/layui.css">
     <script src="../static/layui/layui.js"></script>
     <style>
@@ -36,15 +36,11 @@
         <ul class="layui-nav layui-layout-right" lay-filter="topnav">
             <li class="layui-nav-item">
                 <a>
-                    <img src="../static/image/head_portrait/default.jpg" class="layui-nav-img">
+                    <img src="../static/image/head_portrait/admin.jpg" class="layui-nav-img">
                     root
                 </a>
-                <%--<dl class="layui-nav-child">--%>
-                    <%--<dd><a href="/user?id=${userid}" target="frame">个人资料</a></dd>--%>
-                    <%--<dd><a href="javascript:">密码修改</a></dd>--%>
-                <%--</dl>--%>
             </li>
-            <li class="layui-nav-item" id="quit"><a href="/user/logout">登出</a></li>
+            <li class="layui-nav-item" id="quit"><a href="/admin/logout">登出</a></li>
         </ul>
     </div>
 
@@ -55,21 +51,19 @@
                 <li class="layui-nav-item">
                     <a href="javascript:">管理</a>
                     <dl class="layui-nav-child ">
-                        <dd><a href="/api/users" target="frame">用户管理</a></dd>
-                        <dd><a href="/api/products" target="frame">商品管理</a></dd>
+                        <dd><a href="/api/usersView" target="frame">用户管理</a></dd>
+                        <dd><a href="/api/productView" target="frame">商品管理</a></dd>
                         <dd><a href="/api/loopDisplay" target="frame">轮播管理</a></dd>
-                        <dd><a href="/api/coupons" target="frame">优惠券管理</a></dd>
-                        <dd><a href="/api/coupons" target="frame">优惠券管理</a></dd>
+                        <dd><a href="/api/couponView" target="frame">优惠券管理</a></dd>
                     </dl>
                 </li>
 
                 <li class="layui-nav-item">
-                    <a href="javascript:">数据分析</a>
+                    <a href="/echart/showAll" target="frame">数据分析</a>
                     <dl class="layui-nav-child">
-                        <dd><a href="/" target="frame">商品销售情况</a></dd>
-                        <dd><a href="/" target="frame">商品喜爱情况</a></dd>
-                        <dd><a href="/" target="frame">用户增长趋势</a></dd>
-                        <dd><a href="/" target="frame">商城利润波动趋势</a></dd>
+                        <dd><a href="/echart/productAttentionStatusView" target="frame">商品关注情况</a></dd>
+                        <dd><a href="/echart/userNumberIncreaseStatusView" target="frame">用户注册趋势</a></dd>
+                        <dd><a href="/echart/mallProfitFluctuatingView" target="frame">商城利润波动趋势</a></dd>
                     </dl>
                 </li>
             </ul>
@@ -77,7 +71,7 @@
     </div>
 
     <div id="content">
-        <iframe id="frame" name="frame" src="/showAll"></iframe>
+        <iframe id="frame" name="frame" src="/echart/showAll"></iframe>
     </div>
 
 </div>

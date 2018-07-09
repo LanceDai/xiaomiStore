@@ -40,6 +40,7 @@
             <!--拦截的url-->
             <mvc:mapping path="/shoppingCart/**"/>
             <mvc:mapping path="/selfInfo/**"/>
+            <mvc:mapping path="/attention/**"/>
             <bean class="com.xiaomiStore.interceptor.LoginInterceptor"/>
         </mvc:interceptor>
         <mvc:interceptor>

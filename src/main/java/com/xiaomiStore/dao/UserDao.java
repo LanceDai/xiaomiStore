@@ -3,6 +3,7 @@ package com.xiaomiStore.dao;
 import com.xiaomiStore.pojo.User;
 import org.apache.ibatis.annotations.*;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 @Mapper
@@ -23,14 +24,17 @@ public interface UserDao {
     @Select("SELECT * FROM xiaomi_user WHERE userName = #{userName}")
     User selectByUserName(String userName);
 
+    @Select("SELECT createTime from xiaomi_user order by createTime ")
+    List<Timestamp> selectTime();
+
     @Update("UPDATE xiaomi_user " +
             " SET userName = #{record.userName}," +
-            " password = #{record.password}" +
-            " telephoneNumber = #{record.telephoneNumber}" +
-            " createTime = #{record.createTime}" +
-            " img = #{record.img}" +
-            " hobby = #{record.hobby}" +
-            " address = #{record.address}" +
+            " password = #{record.password}," +
+            " telephoneNumber = #{record.telephoneNumber}," +
+            " createTime = #{record.createTime}," +
+            " img = #{record.img}," +
+            " hobby = #{record.hobby}," +
+            " address = #{record.address}," +
             " sign = #{record.sign}" +
             " WHERE userId = #{record.userId}")
     int update(@Param("record") User record);

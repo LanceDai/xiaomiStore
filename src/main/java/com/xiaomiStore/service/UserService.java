@@ -2,7 +2,9 @@ package com.xiaomiStore.service;
 
 import com.xiaomiStore.pojo.User;
 
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 public interface UserService {
     int insert(User record);
@@ -16,4 +18,6 @@ public interface UserService {
     int update(User record);
 
     int delete(String userId);
+
+    List<Map<String, String>> selectUserStatus();
 }

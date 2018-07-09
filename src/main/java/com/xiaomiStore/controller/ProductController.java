@@ -33,18 +33,18 @@ public class ProductController {
     }
 
     @RequestMapping("/detail/{productName}")
-    public String showDetail(@PathVariable("productName") String productName, Model model,
-                             HttpSession httpSession) {
-        System.out.println("productName = " + productName);
-        //从数据库得到商品详细信息
+    public String showDetail(@PathVariable("productName") String productName, Model model) {
+        //构造商品详情对象
         ProductDetail productDetail = new ProductDetail();
+        //将从URL得到的商品名字赋值给商品详情对象
         productDetail.setProductName(productName);
+        //从数据库得到相应信息
         String productId = productService.getProductIdByProductName(productName);
         productDetail.setColorList(specificationService.selectAllColorWithProduct(productId));
         productDetail.setVersionList(specificationService.selectAllVersionWithProduct(productId));
-        System.out.println(productDetail.getVersionList());
-        System.out.println(productDetail.getColorList());
+        //将商品详情对象加入model
         model.addAttribute("productDetail", productDetail);
+        //跳转到详情页
         return "detail";
     }
 

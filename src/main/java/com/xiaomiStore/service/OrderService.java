@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
+import java.util.Map;
 
 public interface OrderService {
 
@@ -17,4 +18,6 @@ public interface OrderService {
     public Order select(String orderId);
 
     public List<Order> selectAll();
+
+    public List<Map<String, String>> selectTimeAndPrice();
 }

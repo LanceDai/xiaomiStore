@@ -31,4 +31,14 @@ public class CouponServiceImpl implements CouponService {
     public List<Coupon> selectAll() {
         return couponDao.selectAll();
     }
+
+    @Override
+    public Coupon selectById(String couponId) {
+        return couponDao.selectById(couponId);
+    }
+
+    @Override
+    public int update(Coupon record) {
+        return couponDao.update(record);
+    }
 }

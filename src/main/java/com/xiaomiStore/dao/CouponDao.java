@@ -18,4 +18,13 @@ public interface CouponDao {
     @Select("select * from xiaomi_coupon")
     List<Coupon> selectAll();
 
+    @Select("SELECT * FROM xiaomi_coupon WHERE couponId = #{couponId}")
+    Coupon selectById(String couponId);
+
+    @Update("UPDATE xiaomi_coupon SET name = #{record.name}\n" +
+            ",price = #{record.price}\n" +
+            ",description = #{record.description}\n" +
+            ",status = #{record.status}\n" +
+            "WHERE couponId = #{record.couponId}")
+    int update(@Param("record")Coupon record);
 }

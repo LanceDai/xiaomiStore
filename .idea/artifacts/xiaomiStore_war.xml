@@ -1,0 +1,11 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="xiaomiStore:war">
+    <output-path>$PROJECT_DIR$/out/artifacts/xiaomiStore_war</output-path>
+    <root id="archive" name="xiaomiStore_war.war">
+      <element id="artifact" artifact-name="xiaomiStore:war exploded" />
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/../META-INF/MANIFEST.MF" />
+      </element>
+    </root>
+  </artifact>
+</component>

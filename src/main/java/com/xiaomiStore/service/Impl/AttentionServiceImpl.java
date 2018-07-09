@@ -6,7 +6,7 @@ import com.xiaomiStore.service.AttentionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.util.*;
 
 @Service
 public class AttentionServiceImpl implements AttentionService {
@@ -35,5 +35,16 @@ public class AttentionServiceImpl implements AttentionService {
     @Override
     public Integer isExistByUserIdAndProductId(String userId, String productId) {
         return attentionDao.isExistByUserIdAndProductId(userId, productId);
+    }
+
+    @Override
+    public List<Map<String,String>> selectAttentionProductNameAndNumber() {
+        Map<String, Map<String,String>> map = attentionDao.selectAttentionProductNameAndNumber();
+        List<Map<String, String>> list = new ArrayList<>();
+        Set<String> strings = map.keySet();
+        for (String str : strings) {
+            list.add(map.get(str));
+        }
+        return list;
     }
 }

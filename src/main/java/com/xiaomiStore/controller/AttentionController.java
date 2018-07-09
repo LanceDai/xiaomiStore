@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpSession;
 
 @Controller
-@RequestMapping("/attention")
 public class AttentionController {
 
     private final AttentionService attentionService;
@@ -26,9 +25,9 @@ public class AttentionController {
         this.productService = productService;
     }
 
-    @RequestMapping(value = "", method = RequestMethod.POST)
+    @RequestMapping(value = "/attention", method = RequestMethod.POST)
     @ResponseBody
-    public String isAttention(@RequestParam("productName")String productName, HttpSession httpSession){
+    public String changeAttention(@RequestParam("productName")String productName, HttpSession httpSession){
         //判断是否登陆
         User user = (User) httpSession.getAttribute("loginUser");
         if (user == null) {
@@ -40,11 +39,28 @@ public class AttentionController {
         String productId = productService.getProductIdByProductName(productName);
         if (attentionService.isExistByUserIdAndProductId(userId, productId) != 0){
             attentionService.delete(userId, productId);
+            System.out.println("已关注， 取消关注");
             return "false";
         }
         else {
             attentionService.insert(new Attention(userId, productId));
+            System.out.println("未关注， 添加关注");
             return "true";
         }
+    }
+
+    @RequestMapping(value = "/attentionStatus", method = RequestMethod.POST)
+    @ResponseBody
+    public String isAttention(@RequestParam("productName")String productName, HttpSession httpSession){
+        //判断是否登陆
+        User user = (User) httpSession.getAttribute("loginUser");
+        if (user == null) {
+            System.out.println("未登录");
+            return "false";
+        }
+        //判断数据库是否存在关注的记录
+        String userId = user.getUserId();
+        String productId = productService.getProductIdByProductName(productName);
+        return attentionService.isExistByUserIdAndProductId(userId, productId) != 0 ? "true" : "false";
     }
 }

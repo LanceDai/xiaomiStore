@@ -1,0 +1,89 @@
+.coupon-list {
+    width: 906px;
+    margin: auto;
+    padding: 30px 0 0;
+    list-style-type: none;
+    clear: both;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.coupon-list .coupon-card {
+    float: left;
+    width: 280px;
+    height: 360px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    background-color: #ff6700;
+    color: #fff;
+}
+
+.coupon-list .coupon-card .coupon-content {
+    height: 140px;
+    word-break: break-all;
+    padding: 32px 40px 0 40px;
+}
+
+.coupon-list .coupon-card .item-value {
+    font-size: 16px;
+    color: #fff;
+    padding: 0px 0 15px 0;
+    border-bottom: 2px solid #fff;
+    height: 60px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    _zoom: 1;
+}
+
+.coupon-list .coupon-card .coupon-content .item-desc {
+    padding-top: 15px;
+    height: 45px;
+}
+
+.coupon-list .coupon-card-used .item-description, .coupon-list .coupon-card-expired .item-description {
+    border: 1px solid #b0b0b0;
+}
+
+.coupon-list .coupon-card .item-description {
+    font-size: 12px;
+    color: #b0b0b0;
+    height: 110px;
+    background: #f5f5f5;
+    border: 1px solid #ff6700;
+    padding: 0 20px;
+    display: table-cell;
+    vertical-align: middle;
+    width: 238px;
+    line-height: 18px;
+}
+.coupon-list .coupon-card-used .coupon-footer, .coupon-list .coupon-card-expired .coupon-footer {
+    height: 20px;
+    margin-top: 37px;
+}
+
+.coupon-list .coupon-card .coupon-footer {
+    margin-top: 35px;
+    height: 20px;
+    position: relative;
+}
+.filter-first{
+    float: left;
+    padding: 18px 0;
+    list-style-type: none;
+    font-size: 16px;
+    line-height: 1.25px;
+}
+.filter-first li {
+    float: left;
+    padding: 0 20px;
+    border-left: 1px solid #e0e0e0;!important;
+    color: #757575;
+}
+.tab-switch li {
+    cursor: pointer;
+}
+.tab-active {
+    color: #ff6700 !important;
+}

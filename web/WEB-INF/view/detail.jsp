@@ -44,6 +44,7 @@
             console.log("sumPrice = " + sumPrice.text());
             var productName = $("#product_name");
             console.log("productName = " + productName.text());
+            var attention = $("#attention");
 
             sumText.text(productName.text() + nowVersion.find("a").find("span").eq(0).text() + nowColor.text());
             price.text(nowPrice + ".00元");
@@ -90,32 +91,74 @@
                     })
             }
 
+            function check() {
+                var result;
+                $.ajax({
+                    url: "/user/isLogin",
+                    async: false,//同步方式发送请求，true为异步发送
+                    type: "GET",
+                    data: {},
+                    success: function (data, status) {
+                        console.log("Data: " + data + "\nStatus: " + status);
+                        result = data;
+                    }
+                });
+                console.log("result = ", result);
+                return result;
+            }
+
             $("#buy").click(function () {
                 buyOrAdd();
-                alert("购买成功");
-                window.location = "/shoppingCart";
+                if (check() === "true") {
+                    alert("购买成功");
+                    window.location = "/shoppingCart";
+                }
+                else {
+                    window.location = "/login";
+                }
             });
 
             $("#add").click(function () {
                 buyOrAdd();
-                alert("添加成功")
-            })
+                if (check() === "true") {
+                    alert("添加成功")
+                }
+                else {
+                    window.location = "/login";
+                }
+            });
 
-            $("#attention").click(function () {
-                $.post("/attention", {
-                    productName: productName.text(),
+            attention.click(function () {
+                if (check() === "false") {
+                    alert("请登录");
+                } else {
+                    $.post("/attention", {
+                        productName: productName.text()
+                    }, function (data) {
+                        console.log(data);
+                        if (data === "true") {
+                            $("#attention img").attr("src", "../static/image/爱心1.png")
+                        } else {
+                            $("#attention img").attr("src", "../static/image/爱心0.png")
+                        }
+                    })
+                }
+            });
+            if (check() === "false") {
+                $("#attention img").attr("src", "../static/image/爱心0.png")
+            } else {
+                $.post("/attentionStatus", {
+                    productName: productName.text()
                 }, function (data) {
                     console.log(data);
-                    if (data === "true"){
+                    if (data === "true") {
                         $("#attention img").attr("src", "../static/image/爱心1.png")
-                    } else{
+                    } else {
                         $("#attention img").attr("src", "../static/image/爱心0.png")
                     }
                 })
-            })
-
-        })
-
+            }
+        });
     </script>
 </head>
 <body>

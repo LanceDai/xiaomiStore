@@ -12,4 +12,8 @@ public interface CouponService {
     int delete(String couponId);
 
     List<Coupon> selectAll();
+
+    Coupon selectById(String couponId);
+
+    int update(Coupon record);
 }

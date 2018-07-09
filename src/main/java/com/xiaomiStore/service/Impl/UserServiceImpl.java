@@ -6,7 +6,8 @@ import com.xiaomiStore.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.sql.Timestamp;
+import java.util.*;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -46,5 +47,23 @@ public class UserServiceImpl implements UserService {
     @Override
     public int delete(String userId) {
         return userDao.delete(userId);
+    }
+
+    @Override
+    public List<Map<String, String>> selectUserStatus() {
+        Map<String, Integer> map = new LinkedHashMap<>();
+        List<Timestamp> timestampList = userDao.selectTime();
+        for (Timestamp time : timestampList) {
+            String date = time.getMonth() + 1 + "月" + time.getDate() + "日";
+            map.put(date, map.containsKey(date) ? map.get(date) + 1 : 1);
+        }
+        List<Map<String, String>> maps = new ArrayList<>();
+        for (String str : map.keySet()) {
+            Map<String, String> stringStringMap = new HashMap<>();
+            stringStringMap.put("createTime", str);
+            stringStringMap.put("num", String.valueOf(map.get(str)));
+            maps.add(stringStringMap);
+        }
+        return maps;
     }
 }
